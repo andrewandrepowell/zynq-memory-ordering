@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2015.3 (64-bit)
+# SW Build 1368829 on Mon Sep 28 20:06:39 MDT 2015
+# 
+# Start of session at: Sat Dec  5 22:46:45 2015
+# Process ID: 19153
+# Current directory: /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/webtalk
+# Command line: wbtcv -mode batch -source sdk_webtalk.tcl
+# Log file: /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/webtalk/webtalk.log
+# Journal file: /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/webtalk/webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

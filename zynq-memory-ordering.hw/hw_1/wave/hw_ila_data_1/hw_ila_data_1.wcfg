@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="35208fs"></ZoomStartTime>
+      <ZoomEndTime time="57159fs"></ZoomEndTime>
+      <Cursor1Time time="38000fs"></Cursor1Time>
+   </zoom_setting>
+   <WVObjectSize size="41" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARADDR">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARADDR[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARBURST">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARBURST[1:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARBURST[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARCACHE">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARCACHE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARCACHE[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_ARID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARLEN">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARLEN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARLEN[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_ARLOCK">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARLOCK</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARLOCK</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARPROT">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARPROT[2:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARPROT[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARQOS">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARQOS[3:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARQOS[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_ARREADY">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARREADY</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARREADY</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_ARSIZE">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARSIZE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARSIZE[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_ARUSER">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARUSER</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARUSER</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_ARVALID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_ARVALID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_ARVALID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWADDR">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWADDR[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWBURST">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWBURST[1:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWBURST[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWCACHE">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWCACHE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWCACHE[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_AWID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWLEN">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWLEN[7:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWLEN[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_AWLOCK">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWLOCK</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWLOCK</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWPROT">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWPROT[2:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWPROT[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWQOS">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWQOS[3:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWQOS[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_AWREADY">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWREADY</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWREADY</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_AWSIZE">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWSIZE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWSIZE[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_AWUSER">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWUSER</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWUSER</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_AWVALID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_AWVALID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_AWVALID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_BID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_BID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_BID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_BREADY">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_BREADY</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_BREADY</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_BRESP">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_BRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_BRESP[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_BVALID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_BVALID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_BVALID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_RDATA">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RDATA[63:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RDATA[63:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_RID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_RLAST">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RLAST</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RLAST</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_RREADY">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RREADY</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RREADY</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_RRESP">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RRESP[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_RUSER">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RUSER</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RUSER</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_RVALID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_RVALID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_RVALID</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_WDATA">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_WDATA[63:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_WDATA[63:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_WLAST">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_WLAST</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_WLAST</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_WREADY">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_WREADY</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_WREADY</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="array" fp_name="block_diagram_i/hardware_accelerator_0_data_WSTRB">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_WSTRB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_WSTRB[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_WUSER">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_WUSER</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_WUSER</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" type="logic" fp_name="block_diagram_i/hardware_accelerator_0_data_WVALID">
+      <obj_property name="ElementShortName">block_diagram_i/hardware_accelerator_0_data_WVALID</obj_property>
+      <obj_property name="ObjectShortName">block_diagram_i/hardware_accelerator_0_data_WVALID</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,9 @@
+#include "constant_definitions.h"
+
+
+int main() {
+
+
+	/* The program should never reach this point. */
+	return 0;
+}

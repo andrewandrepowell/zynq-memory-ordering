@@ -1,0 +1,17 @@
+#include "constant_definitions.h"
+
+/* Creates a task with default parameters. */
+void xTaskCreate_sc(
+		TaskHandle_t* task,
+		TaskFunction_t task_function,
+		void* param, const char* name) {
+
+	xTaskCreate(
+		task_function,			/* The function called when the thread is executed */
+		name, 					/* name given to the thread for debugging purposes */
+		TASK_DEFAULT_SIZE, 		/* stack size for calling functions from thread */
+		param,					/* pointer to the thread for access to handler */
+		tskIDLE_PRIORITY,		/* priority is set to the default */
+		task);					/* return handle for the thread */
+	configASSERT(task != NULL);
+}

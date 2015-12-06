@@ -1,0 +1,104 @@
+#include "constant_definitions.h"
+
+static TaskHandle_t main_task_obj;
+static SemaphoreHandle_t mutex_obj;
+static XGpioPs emio_obj;
+
+static Hardware hde_objs[HA_TOTAL];			/**< Hardware accelerator objects */
+static Memory mry_objs[MEMORY_TOTAL];		/**< Memory objects for DDR and OCM */
+
+void main_task_func(void* ptr);
+extern void xTaskCreate_sc(TaskHandle_t* task,TaskFunction_t task_function,
+		void* param, const char* name);
+extern void prvSetupHardware(void);
+
+#define Hardware_set_location(hde_obj,location_0) ({(hde_obj)->location = location_0;})
+#define Hardware_get_location(hde_obj) (const int)(hde_obj)->location
+static Hardware* Hardware_find(char* string,int* index);
+
+int main() {
+
+	/* Configure interrupts. */
+	prvSetupHardware();
+
+	/* Configure the main task and mutex. */
+	mutex_obj = xSemaphoreCreateMutex();
+	configASSERT(mutex_obj!=NULL);
+	xTaskCreate_sc(&main_task_obj,main_task_func,NULL,"Main Task");
+
+	/* Start commandline. */
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+
+void main_task_func(void* ptr) {
+
+	(void) ptr;
+
+	/* This task should run indefinitely. */
+	while (1) {
+
+		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
+		xSemaphoreTake(mutex_obj,portMAX_DELAY);
+
+
+		xSemaphoreGive(mutex_obj);
+	}
+}
+
+int Main_request_operation() {
+	if (eTaskGetState(main_task_obj)==eBlocked) {
+		xTaskNotifyGive(main_task_obj);
+		return 1;
+	}
+	return 0;
+}
+
+int Main_set_hardware_location(char* string, int location) {
+	int result = 0;
+	if (xSemaphoreTake(mutex_obj,0)==pdTRUE) {
+		Hardware* current_hardware = Hardware_find(string,NULL);
+		if (current_hardware!=NULL) {
+			Hardware_set_location(current_hardware,location);
+		}
+		xSemaphoreGive(mutex_obj);
+	} else {
+
+	}
+
+	int i;
+	int result = 0;
+	Hardware* hde_obj;
+	if (Task_lock(&tsk_obj)) {
+		for (i=0;i<HA_TOTAL;i++) {
+			hde_obj = &hde_objs[i];
+			if (Hardware_get_identifier(hde_obj)==hardware_identifier) {
+				result = 1;
+				Hardware_set_location(hde_obj,location);
+				break;
+			}
+		}
+		Task_unlock(&tsk_obj);
+	}
+	return result;
+}
+
+Hardware* Hardware_find(char* string,int* index) {
+	int each_hardware;
+	for (each_hardware=0;each_hardware<HA_TOTAL;each_hardware++) {
+		Hardware* current_hardware = &hde_obj[each_hardware];
+		if (strcmp(string,current_hardware->string)==0) {
+			if (index!=NULL)
+				*index = each_hardware;
+			return current_hardware;
+		}
+	}
+	return NULL;
+}
+
+
+

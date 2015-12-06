@@ -1,0 +1,20 @@
+#include "constant_definitions.h"
+
+static TaskHandle_t main_task_obj;
+
+int main() {
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+
+/* Creates a task with default parameters. */
+void xTaskCreate_sc(
+		TaskHandle_t* task,
+		TaskFunction_t task_function,
+		void* param, const char* name) {
+
+}

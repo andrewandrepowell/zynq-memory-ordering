@@ -1,0 +1,36 @@
+/*
+ * commandline.c
+ *
+ *  Created on: Dec 3, 2015
+ *      Author: scdl
+ */
+
+#include "constant_definitions.h"
+
+extern void vUARTCommandConsoleStart( uint16_t usStackSize, UBaseType_t uxPriority );
+
+static 	portBASE_TYPE	set_json_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	set_configure_smp_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	request_operation_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_enable_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_location_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_burst_len_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_transfer_size_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_params_operation_mode_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_memory_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_cache_coherent_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	get_hardware_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_memory_policies_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_memory_transfer_size_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	get_memory_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	get_hard_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	get_synch_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_enable_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_identifier_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_location_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_powersave_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_burst_len_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_transfer_size_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_operation_mode_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_memory_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	get_dummy_task_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);

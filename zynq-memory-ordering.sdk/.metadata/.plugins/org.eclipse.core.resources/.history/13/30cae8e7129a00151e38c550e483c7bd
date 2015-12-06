@@ -1,0 +1,36 @@
+#include "constant_definitions.h"
+
+TaskHandle_t main_task_obj;
+XGpioPs emio_obj;
+
+void main_task_func(void* ptr);
+extern void xTaskCreate_sc(TaskHandle_t* task,TaskFunction_t task_function,
+		void* param, const char* name);
+extern void prvSetupHardware(void);
+
+int main() {
+
+	/* Configure interrupts. */
+	prvSetupHardware();
+
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+
+void main_task_func(void* ptr) {
+
+	/* This task should run indefinitely. */
+	while (1) {
+
+		/* The main task should sleep until notified. */
+		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
+
+	}
+}
+
+
+

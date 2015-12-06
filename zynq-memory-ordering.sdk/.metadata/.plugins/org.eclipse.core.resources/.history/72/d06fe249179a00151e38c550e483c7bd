@@ -1,0 +1,70 @@
+#include "constant_definitions.h"
+
+static TaskHandle_t main_task_obj;
+static SemaphoreHandle_t mutex_obj;
+static XGpioPs emio_obj;
+
+static Hardware hde_objs[HA_TOTAL];			/**< Hardware accelerator objects */
+static Memory mry_objs[MEMORY_TOTAL];		/**< Memory objects for DDR and OCM */
+
+void main_task_func(void* ptr);
+extern void xTaskCreate_sc(TaskHandle_t* task,TaskFunction_t task_function,
+		void* param, const char* name);
+extern void prvSetupHardware(void);
+
+int main() {
+
+	/* Configure interrupts. */
+	prvSetupHardware();
+
+	/* Configure the main task and mutex. */
+	mutex_obj = xSemaphoreCreateMutex();
+	configASSERT(mutex_obj!=NULL);
+	xTaskCreate_sc(&main_task_obj,main_task_func,NULL,"Main Task");
+
+	/* Start commandline. */
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+
+void main_task_func(void* ptr) {
+
+	(void) ptr;
+
+	/* This task should run indefinitely. */
+	while (1) {
+
+		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
+		xSemaphoreTake(mutex_obj,portMAX_DELAY);
+
+
+		xSemaphoreGive(mutex_obj);
+	}
+}
+
+int main_request_operation() {
+	if (eTaskGetState(main_task_obj)==eBlocked) {
+		xTaskNotifyGive(main_task_obj);
+		return 1;
+	}
+	return 0;
+}
+
+Hardware* Hardware_find(char* string,int* index) {
+	int each_hardware;
+	for (each_hardware=0;each_hardware<HA_TOTAL;each_hardware++) {
+		Hardware* current_hardware = &hde_obj[each_hardware];
+		if (strcmp(string,current_hardware->string)==0) {
+			*index = each_hardware;
+			return current_hardware;
+		}
+	}
+	return NULL;
+}
+
+
+

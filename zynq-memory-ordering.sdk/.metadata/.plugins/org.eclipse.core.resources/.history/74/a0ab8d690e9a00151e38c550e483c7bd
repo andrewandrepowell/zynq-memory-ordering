@@ -1,0 +1,12 @@
+/*
+ * commandline.c
+ *
+ *  Created on: Dec 3, 2015
+ *      Author: scdl
+ */
+
+#include "constant_definitions.h"
+
+char cOutputBuffer[ configCOMMAND_INT_MAX_OUTPUT_SIZE ];
+
+extern void vUARTCommandConsoleStart( uint16_t usStackSize, UBaseType_t uxPriority );

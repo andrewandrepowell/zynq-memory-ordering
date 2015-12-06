@@ -1,0 +1,377 @@
+/*
+ * commandline.c
+ *
+ *  Created on: Dec 3, 2015
+ *      Author: scdl
+ */
+
+#include "constant_definitions.h"
+#include "FreeRTOS_CLI.h"
+
+#define HELP_CMD_PARAM_BOOL		"  [bool] Must either be 0 or 1."
+#define HELP_CMD_PARAM_HA		"  [ha] Must be one of the following string of characters: ha_acp_0, ha_acp_1, ha_gp0_0, ha_hp0_0, ha_hp1_0, ha_hp2_0."
+#define HELP_CMD_PARAM_LEN		"  [len] Must inclusively range from 2 to 256, in steps of power of 2."
+#define HELP_CMD_PARAM_SIZE		"  [size] Must be greater than 0 and a multiple of the burst length multiplied by the AXI data width in bytes."
+#define HELP_CMD_PARAM_OP_MOD 	"  [op_mod] Must be one of the following string of characters: separate, mixed, fully_mixed."
+#define HELP_CMD_PARAM_MEM		"  [mem] Must be one of the following string of characters: ocm, ddr. "
+#define HELP_CMD_PARAM_CACHE	"  [cache] Must be one of the following string of characters: so, sd, wt_nwa, wb_wa, wb_nwa, nc."
+#define HELP_CMD_PARAM_ID		"  [id] Must be a value greater than 0."
+#define HELP_CMD_PARAM_LOC		"  [loc] Must be a value greater than 0."
+#define HELP_CMD_PARAM_DUM		"  [dum] Must be one of the following string of characters: dummy_0"
+
+
+extern void vUARTCommandConsoleStart( uint16_t usStackSize, UBaseType_t uxPriority );
+
+static 	portBASE_TYPE	set_json_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	set_configure_cpu1_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	set_configure_smp_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	request_operation_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_enable_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_location_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_burst_len_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_transfer_size_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_params_operation_mode_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_params_memory_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_hardware_cache_coherent_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	get_hardware_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_memory_policies_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_memory_transfer_size_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	get_memory_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	get_hard_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	get_synch_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_enable_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_identifier_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_location_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_powersave_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_burst_len_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_transfer_size_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_operation_mode_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static 	portBASE_TYPE	set_dummy_task_params_memory_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+static	portBASE_TYPE	get_dummy_task_report_func(char *pcWriteBuffer,size_t xWriteBufferLen,const char *pcCommandString);
+
+/**************** Type Definitions (User Defined) ********************/
+
+static const CLI_Command_Definition_t set_json_struct = {
+	"set_json",
+	"\r\nset_json [bool]\r\n"
+	" Sets the output to pretty-print or JavaScript Object Notation (JSON).\r\n"
+	HELP_CMD_PARAM_BOOL " 0 indicates pretty-print is active, whereas 1 indicates JSON-encoding is active.\r\n"
+	"\r\n",
+	set_json_func,
+	1
+};
+
+static const CLI_Command_Definition_t set_configure_cpu1_struct = {
+	"set_configure_cpu1",
+	"\r\nset_configure_cpu1 [bool]\r\n"
+	" Sets the flag indicating whether or not certain commands are forwarded to the virtual command line of cpu 1.\r\n"
+	HELP_CMD_PARAM_BOOL " 0 indicates cpu 0 is configurable, whereas 1 indicates some commands are forwarded to cpu 1.\r\n"
+	"\r\n",
+	set_configure_cpu1_func,
+	1
+};
+
+static const CLI_Command_Definition_t set_configure_smp_struct = {
+	"set_configure_smp",
+	"\r\nset_configure_smp [bool]\r\n"
+	" Sets the symmetric multiprocessing (SMP) bit.\r\n"
+	HELP_CMD_PARAM_BOOL " 0 indicates indicates SMP bit is low, whereas 1 indicates SMP bit is high.\r\n"
+	"\r\n",
+	set_configure_smp_func,
+	1
+};
+
+static const CLI_Command_Definition_t request_opteration_struct = {
+	"request_operation",
+	"\r\nrequest_operation\r\n"
+	" Starts the operation, but only when at least one hardware accelerator is enabled.\r\n"
+	"\r\n",
+	request_operation_func,
+	0
+};
+
+static const CLI_Command_Definition_t set_hardware_enable_struct = {
+	"set_hardware_enable",
+	"\r\nset_hardware_enable [ha] [bool]\r\n"
+	" Sets the enable for a specified hardware accelerator.\n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is a boolean value that specifies the enable state.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_BOOL "\r\n"
+	"\r\n",
+	set_hardware_enable_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_hardware_location_struct = {
+	"set_hardware_location",
+	"\r\nset_hardware_location [ha] [loc]\r\n"
+	" Sets the location for a specified hardware accelerator.\n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is an integer value that specifies the location.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_LOC "\r\n"
+	"\r\n",
+	set_hardware_location_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_hardware_params_burst_len_struct = {
+	"set_hardware_params_burst_len",
+	"\r\nset_hardware_params_burst_len [ha] [len]\r\n"
+	" Sets the burst length for a specified hardware accelerator.\n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is the burst length.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_LEN "\r\n"
+	"\r\n",
+	set_hardware_params_burst_len_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_hardware_params_transfer_size_struct = {
+	"set_hardware_params_transfer_size",
+	"\r\nset_hardware_params_transfer_size [ha] [size]\r\n"
+	" Sets the transfer size for a specified hardware accelerator.\n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is the transfer size.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_SIZE "\r\n"
+	"\r\n",
+	set_hardware_params_transfer_size_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_hardware_params_operation_mode_struct = {
+	"set_hardware_params_operation_mode",
+	"\r\nset_hardware_params_operation_mode [ha] [op_mod]\r\n"
+	" Sets the operation mode for a specified hardware accelerator.\n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is string that specifies the operation mode.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_OP_MOD "\r\n"
+	"\r\n",
+	set_hardware_params_params_operation_mode_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_hardware_params_memory_struct = {
+	"set_hardware_params_memory",
+	"\r\nset_hardware_params_memory [ha] [mem]\r\n"
+	" Sets the memory for a specified hardware accelerator.\n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is string that specifies the memory.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_MEM "\r\n"
+	"\r\n",
+	set_hardware_params_memory_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_hardware_cache_coherent_struct = {
+	"set_hardware_cache_coherent",
+	"\r\nset_hardware_cache_coherent [ha] [bool]\r\n"
+	" Sets the cache coherent for a specified hardware accelerator. Cache coherency is only available to the ACP. \n\r"
+	" The first argument is string that specifies the hardware accelerator, whereas the second is a boolean value that specifies the enable state.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	HELP_CMD_PARAM_BOOL "\r\n"
+	"\r\n",
+	set_hardware_cache_coherent_func,
+	2
+};
+
+static const CLI_Command_Definition_t get_hardware_report_struct = {
+	"get_hardware_report",
+	"\r\nget_hardware_report [ha]\r\n"
+	" Gets the report for a specified hardware accelerator.\n\r"
+	" The argument is string that specifies the hardware accelerator.\r\n"
+	HELP_CMD_PARAM_HA "\r\n"
+	"\r\n",
+	get_hardware_report_func,
+	1
+};
+
+static const CLI_Command_Definition_t set_memory_policies_struct = {
+	"set_memory_policies",
+	"\r\nset_memory_policies [mem] [cache] [cache]\r\n"
+	" Sets the cache policies for a specified memory.\n\r"
+	" The first argument is string that specifies the memory, whereas the next two string arguments respectively specify the L1 and L2 cache policies.\r\n"
+	HELP_CMD_PARAM_MEM "\r\n"
+	HELP_CMD_PARAM_CACHE "\r\n"
+	HELP_CMD_PARAM_CACHE "\r\n"
+	"\r\n",
+	set_memory_policies_func,
+	3
+};
+
+static const CLI_Command_Definition_t set_memory_transfer_size_struct = {
+	"set_memory_transfer_size",
+	"\r\nset_memory_transfer_size [mem] [size]\r\n"
+	" Sets the maximum transfer size of a specified memory.\n\r"
+	" The first argument is string that specifies the memory, whereas the next is the transfer size.\r\n"
+	HELP_CMD_PARAM_MEM "\r\n"
+	HELP_CMD_PARAM_SIZE "\r\n"
+	"\r\n",
+	set_memory_transfer_size_func,
+	2
+};
+
+static const CLI_Command_Definition_t get_memory_report_struct = {
+	"get_memory_report",
+	"\r\nget_memory_report [mem]\r\n"
+	" Gets the report for a specified memory.\n\r"
+	" The argument is string that specifies the memory.\r\n"
+	HELP_CMD_PARAM_MEM "\r\n"
+	"\r\n",
+	get_memory_report_func,
+	1
+};
+
+static const CLI_Command_Definition_t get_hard_report_struct = {
+	"get_hard_report",
+	"\r\nget_hard_report\r\n"
+	" Returns a report with the hard coded configurations, including clock speeds (not implemented).\n\r"
+	"\r\n",
+	get_hard_report_func,
+	0
+};
+
+static const CLI_Command_Definition_t get_synch_report_struct = {
+	"get_synch_report",
+	"\r\nget_synch_report\r\n"
+	" Gets the synch report.\n\r"
+	"\r\n",
+	get_synch_report_func,
+	0
+};
+
+static const CLI_Command_Definition_t set_dummy_task_enable_struct = {
+	"set_dummy_task_enable",
+	"\r\nset_dummy_task_enable [dum] [bool]\r\n"
+	" Sets the enable for the dummy task.\n\r"
+	" The only argument is a boolean value that specifies the enable state.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_BOOL "\r\n"
+	"\r\n",
+	set_dummy_task_enable_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_identifier_struct = {
+	"set_dummy_task_identifier",
+	"\r\nset_dummy_task_identifier [dum] [id]\r\n"
+	" Sets the identifier of the dummy task.\n\r"
+	" The first argument is string that specifies the dummy task, whereas the next is a value that specifies the identifier.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_ID "\r\n"
+	"\r\n",
+	set_dummy_task_identifier_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_location_struct = {
+	"set_dummy_task_location",
+	"\r\nset_dummy_task_location [dum] [loc]\r\n"
+	" Sets the location of the dummy task.\n\r"
+	" The first argument is string that specifies the dummy task, whereas the next is a value that specifies the location.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_LOC "\r\n"
+	"\r\n",
+	set_dummy_task_location_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_powersave_struct = {
+	"set_dummy_task_powersave",
+	"\r\nset_dummy_task_powersave [dum] [bool]\r\n"
+	" Sets whether the dummy task launches in powersave mode.\n\r"
+	" The only argument is a boolean value that specifies the powersave state.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_BOOL "\r\n"
+	"\r\n",
+	set_dummy_task_powersave_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_params_burst_len_struct = {
+	"set_dummy_task_params_burst_len",
+	"\r\nset_dummy_task_params_burst_len [dum] [len]\r\n"
+	" Sets the burst length of the dummy task in words.\n\r"
+	" The first argument is string that specifies the dummy task, whereas the next is a value that specifies the burst length.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_LEN "\r\n"
+	"\r\n",
+	set_dummy_task_params_burst_len_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_params_transfer_size_struct = {
+	"set_dummy_task_params_transfer_size",
+	"\r\nset_dummy_task_params_transfer_size [dum] [size]\r\n"
+	" Sets the transfer size of the dummy task in bytes.\n\r"
+	" The first argument is string that specifies the dummy task, whereas the next is a value that specifies the transfer size.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_SIZE "\r\n"
+	"\r\n",
+	set_dummy_task_params_transfer_size_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_params_operation_mode_struct = {
+	"set_dummy_task_params_operation_mode",
+	"\r\nset_dummy_task_params_operation_mode [dum] [op_mod]\r\n"
+	" Sets the operation mode of the dummy task.\n\r"
+	" The first argument is string that specifies the dummy task, whereas the next is a string that specifies the operation mode.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_OP_MOD "\r\n"
+	"\r\n",
+	set_dummy_task_params_operation_mode_func,
+	2
+};
+
+static const CLI_Command_Definition_t set_dummy_task_params_memory_struct = {
+	"set_dummy_task_params_memory",
+	"\r\nset_dummy_task_params_memory [dum] [mem]\r\n"
+	" Sets the operation mode of the dummy task.\n\r"
+	" The first argument is string that specifies the dummy task, whereas the next is a string that specifies the operation mode.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	HELP_CMD_PARAM_MEM "\r\n"
+	"\r\n",
+	set_dummy_task_params_memory_func,
+	2
+};
+
+static const CLI_Command_Definition_t get_dummy_task_report_struct = {
+	"get_dummy_task_report",
+	"\r\nget_dummy_task_report [dum]\r\n"
+	" Gets the report for the specified dummy task.\n\r"
+	" The argument is a boolean value that specifies the dummy task.\r\n"
+	HELP_CMD_PARAM_DUM "\r\n"
+	"\r\n",
+	get_dummy_task_report_func,
+	1
+};
+
+void commandline_setup() {
+
+	FreeRTOS_CLIRegisterCommand(&set_json_struct);
+	FreeRTOS_CLIRegisterCommand(&set_configure_cpu1_struct);
+	FreeRTOS_CLIRegisterCommand(&set_configure_smp_struct);
+	FreeRTOS_CLIRegisterCommand(&request_opteration_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_enable_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_location_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_params_burst_len_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_params_transfer_size_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_params_memory_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_params_operation_mode_struct);
+	FreeRTOS_CLIRegisterCommand(&set_hardware_cache_coherent_struct);
+	FreeRTOS_CLIRegisterCommand(&get_hardware_report_struct);
+	FreeRTOS_CLIRegisterCommand(&set_memory_policies_struct);
+	FreeRTOS_CLIRegisterCommand(&set_memory_transfer_size_struct);
+	FreeRTOS_CLIRegisterCommand(&get_memory_report_struct);
+	FreeRTOS_CLIRegisterCommand(&get_hard_report_struct);
+	FreeRTOS_CLIRegisterCommand(&get_synch_report_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_enable_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_identifier_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_location_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_powersave_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_params_burst_len_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_params_transfer_size_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_params_operation_mode_struct);
+	FreeRTOS_CLIRegisterCommand(&set_dummy_task_params_memory_struct);
+	FreeRTOS_CLIRegisterCommand(&get_dummy_task_report_struct);
+}

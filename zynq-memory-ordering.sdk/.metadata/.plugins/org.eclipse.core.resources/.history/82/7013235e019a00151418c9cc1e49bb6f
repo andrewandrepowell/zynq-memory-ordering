@@ -1,0 +1,12 @@
+#include "constant_definitions.h"
+
+
+int main() {
+
+	/* Start the tasks and timer running. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+

@@ -1,0 +1,12 @@
+#include "constant_definitions.h"
+
+
+int main() {
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+

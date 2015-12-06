@@ -1,0 +1,10 @@
+/*
+ * commandline.c
+ *
+ *  Created on: Dec 3, 2015
+ *      Author: scdl
+ */
+
+#include "constant_definitions.h"
+
+extern void vUARTCommandConsoleStart( uint16_t usStackSize, UBaseType_t uxPriority );

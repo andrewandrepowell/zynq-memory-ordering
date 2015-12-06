@@ -1,0 +1,45 @@
+#include "constant_definitions.h"
+
+static TaskHandle_t main_task_obj;
+static SemaphoreHandle_t mutex_obj;
+static XGpioPs emio_obj;
+
+void main_task_func(void* ptr);
+extern void xTaskCreate_sc(TaskHandle_t* task,TaskFunction_t task_function,
+		void* param, const char* name);
+extern void prvSetupHardware(void);
+
+int main() {
+
+	/* Configure interrupts. */
+	prvSetupHardware();
+
+	/* Configure the main task and mutex. */
+	mutex_obj = xSemaphoreCreateMutex();
+	configASSERT(mutex_obj!=NULL);
+	xTaskCreate_sc(&main_task_obj,main_task_func,NULL,"Main Task");
+
+	/* Start commandline. */
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+
+void main_task_func(void* ptr) {
+
+	(void) ptr;
+
+	/* This task should run indefinitely. */
+	while (1) {
+
+		/* The main task should sleep until notified. */
+		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
+
+	}
+}
+
+
+

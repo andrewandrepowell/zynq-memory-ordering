@@ -1,0 +1,44 @@
+#include "constant_definitions.h"
+
+TaskHandle_t main_task_obj;
+XGpioPs emio_obj;
+
+void main_task_func(void* ptr);
+void xTaskCreate_sc(TaskHandle_t* task,TaskFunction_t task_function,
+		void* param, const char* name);
+
+int main() {
+
+	/* Start FreeRTOS's scheduler. */
+	vTaskStartScheduler();
+
+	/* The program should never reach this point. */
+	return 0;
+}
+
+void main_task_func(void* ptr) {
+
+	/* This task should run indefinitely. */
+	while (1) {
+
+		/* The main task should sleep until notified. */
+		ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
+
+	}
+}
+
+/* Creates a task with default parameters. */
+void xTaskCreate_sc(
+		TaskHandle_t* task,
+		TaskFunction_t task_function,
+		void* param, const char* name) {
+	xTaskCreate(
+		task_function,			/* The function called when the thread is executed */
+		name, 					/* name given to the thread for debugging purposes */
+		TASK_DEFAULT_SIZE, 		/* stack size for calling functions from thread */
+		param,					/* pointer to the thread for access to handler */
+		tskIDLE_PRIORITY,		/* priority is set to the default */
+		task);					/* return handle for the thread */
+	configASSERT(task != NULL);
+}
+

@@ -1,0 +1,36 @@
+/*
+ * constant_definitions.h
+ *
+ *  Created on: Dec 3, 2015
+ *      Author: scdl
+ */
+
+#ifndef CONSTANT_DEFINITIONS_H_
+#define CONSTANT_DEFINITIONS_H_
+
+#include "xparameters.h"
+#include "xgpio.h"
+
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+#define IO_ID								XPAR_XGPIOPS_0_DEVICE_ID
+#define IO_DIRECTION_OUT(p)					XGpioPs_SetDirectionPin(&emio_obj, (p), 1)
+#define IO_DIRECTION_IN(p)					XGpioPs_SetDirectionPin(&emio_obj, (p), 0)
+#define IO_WRITE_HIGH(p)					XGpioPs_WritePin(&emio_obj, (p), 1)
+#define IO_WRITE_LOW(p)						XGpioPs_WritePin(&emio_obj, (p), 0)
+#define IO_READ(p)							XGpioPs_ReadPin(&emio_obj, (p))
+#define IO_BASE								54
+#define IO_ENABLE(ha_id)					(IO_BASE+(ha_id))
+
+#define HA_ACP_0_STRING						"ha_acp_0"
+#define HA_ACP_0_IS_CONNECTED_TO_ACP_FLAG	1
+#define HA_ACP_0_IS_64b_FLAG				1
+#define HA_ACP_0_IS_CACHE_COHERENT_FLAG		1
+#define HA_ACP_0_IO_RUN_OPERATION			IO_ENABLE(1)
+#define HA_ACP_0_INT_ID						XPAR_FABRIC_HIER_PSPL_PORT_ACP_HIER_HARDWARE_ACCELERATOR_0_HARDWARE_ACCELERATOR_0_READY_INTR
+#define HA_ACP_0_M_AXI_BASE_ADDRESS			XPAR_HIER_PSPL_PORT_ACP_HIER_HARDWARE_ACCELERATOR_0_HARDWARE_ACCELERATOR_0_S_AXI_LITE_REGISTERS_BASEADDR
+#define HA_ACP_0_PERFORM_BASE_ADDRESS		XPAR_HIER_PSPL_PORT_ACP_HIER_HARDWARE_ACCELERATOR_0_AXI3_METRICS_COUNTER_0_S_AXI_LITE_BASEADDR
+
+
+#endif /* CONSTANT_DEFINITIONS_H_ */

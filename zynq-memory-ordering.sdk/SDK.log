@@ -1,0 +1,1131 @@
+23:47:03 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+23:47:14 INFO  : XSDB server has started successfully.
+23:47:19 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+23:55:28 INFO  : Attempting to launch Hardware server...
+23:55:28 INFO  : Hardware server is launched successfully.
+23:57:49 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:57:49 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+23:57:49 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:57:49 INFO  : System reset is completed.
+23:57:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+23:57:55 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+23:57:55 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:57:56 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+23:57:56 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:57:57 INFO  : 'ps7_init' command is executed.
+23:57:57 INFO  : 'ps7_post_config' command is executed.
+23:57:57 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+23:57:57 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+23:57:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+23:57:57 INFO  : Memory regions updated for context APU
+23:57:57 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+23:57:58 INFO  : 'con' command is executed.
+23:57:58 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+00:19:02 WARN  : Unexpected exception occurred.
+java.lang.Exception: java.lang.Error: Channel is closed
+	at org.eclipse.tcf.core.Command.<init>(Command.java:83)
+	at com.xilinx.sdk.xsdb.XSDBCommandManager$8.<init>(XSDBCommandManager.java:384)
+	at com.xilinx.sdk.xsdb.XSDBCommandManager.issueTcfCmd(XSDBCommandManager.java:384)
+	at com.xilinx.sdk.xsdb.XSDBCommandManager.access$4(XSDBCommandManager.java:381)
+	at com.xilinx.sdk.xsdb.XSDBCommandManager$7.run(XSDBCommandManager.java:376)
+	at org.eclipse.tcf.EventQueue.run(EventQueue.java:95)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.Error: Channel is closed
+	at org.eclipse.tcf.core.AbstractChannel.sendCommand(AbstractChannel.java:875)
+	at org.eclipse.tcf.core.Command.<init>(Command.java:79)
+	... 6 more
+00:23:00 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+00:23:01 INFO  : XSDB server has started successfully.
+00:23:02 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+00:23:03 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+00:23:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:23:10 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+00:23:10 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+00:23:10 INFO  : System reset is completed.
+00:23:13 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+00:23:16 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+00:23:16 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+00:23:16 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+00:23:17 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+00:23:17 INFO  : 'ps7_init' command is executed.
+00:23:17 INFO  : 'ps7_post_config' command is executed.
+00:23:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+00:23:18 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+00:23:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+00:23:18 INFO  : Memory regions updated for context APU
+00:23:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+00:23:18 INFO  : 'con' command is executed.
+00:23:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:20:58 INFO  : Disconnected from the channel tcfchan#1.
+15:20:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:20:58 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:20:58 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:20:58 INFO  : System reset is completed.
+15:21:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+15:21:04 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+15:21:04 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:21:05 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+15:21:05 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:21:06 INFO  : 'ps7_init' command is executed.
+15:21:06 INFO  : 'ps7_post_config' command is executed.
+15:21:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:21:06 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:21:06 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+15:21:06 INFO  : Memory regions updated for context APU
+15:21:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:21:07 INFO  : 'con' command is executed.
+15:21:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:21:42 INFO  : Disconnected from the channel tcfchan#2.
+15:21:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:21:42 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:21:43 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:21:43 INFO  : System reset is completed.
+15:21:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+15:21:48 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+15:21:49 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:21:49 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+15:21:49 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:21:50 INFO  : 'ps7_init' command is executed.
+15:21:50 INFO  : 'ps7_post_config' command is executed.
+15:21:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:21:51 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:21:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+15:21:51 INFO  : Memory regions updated for context APU
+15:21:51 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:21:51 INFO  : 'con' command is executed.
+15:21:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:33:31 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+15:33:34 INFO  : XSDB server has started successfully.
+15:33:34 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+15:33:35 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+15:34:04 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+15:34:06 INFO  : XSDB server has started successfully.
+15:34:06 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+15:34:06 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+16:46:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:46:26 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:46:27 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+16:46:27 INFO  : System reset is completed.
+16:46:30 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+16:46:33 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+16:46:33 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+16:46:33 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+16:46:33 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+16:46:34 INFO  : 'ps7_init' command is executed.
+16:46:34 INFO  : 'ps7_post_config' command is executed.
+16:46:35 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:46:35 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+16:46:35 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+16:46:35 INFO  : Memory regions updated for context APU
+16:46:35 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:46:35 INFO  : 'con' command is executed.
+16:46:35 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+16:48:12 INFO  : Disconnected from the channel tcfchan#1.
+16:48:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:48:12 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:48:13 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+16:48:13 INFO  : System reset is completed.
+16:48:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+16:48:23 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+16:48:23 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+16:48:23 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+16:48:24 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+16:48:24 INFO  : 'ps7_init' command is executed.
+16:48:25 INFO  : 'ps7_post_config' command is executed.
+16:48:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:48:25 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+16:48:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+16:48:25 INFO  : Memory regions updated for context APU
+16:48:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+16:48:26 INFO  : 'con' command is executed.
+16:48:26 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+17:16:32 INFO  : Disconnected from the channel tcfchan#2.
+17:16:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:16:32 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:16:33 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+17:16:33 INFO  : System reset is completed.
+17:16:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+17:16:44 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+17:16:44 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+17:16:44 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+17:16:44 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+17:16:45 INFO  : 'ps7_init' command is executed.
+17:16:45 INFO  : 'ps7_post_config' command is executed.
+17:16:45 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:16:46 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+17:16:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+17:16:46 INFO  : Memory regions updated for context APU
+17:16:46 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+17:16:46 INFO  : 'con' command is executed.
+17:16:46 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+17:22:27 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+17:22:29 INFO  : XSDB server has started successfully.
+17:22:42 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+17:22:42 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+17:23:36 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+17:23:37 INFO  : XSDB server has started successfully.
+17:23:38 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+17:23:38 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+02:28:20 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449213987000,  Project:1449117759000
+02:28:20 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+02:28:25 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+02:28:31 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+02:28:38 INFO  : 
+02:28:39 INFO  : Updating hardware inferred compiler options for software_application.
+02:28:40 INFO  : Clearing existing target manager status.
+02:51:06 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+02:51:09 INFO  : XSDB server has started successfully.
+02:51:21 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+02:51:22 INFO  : XSDB server has started successfully.
+02:51:22 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+02:51:22 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+02:59:36 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449215975000,  Project:1449213987000
+02:59:36 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+02:59:37 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+02:59:40 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+02:59:42 INFO  : 
+02:59:43 INFO  : 
+02:59:43 INFO  : Updating hardware inferred compiler options for software_application.
+02:59:46 INFO  : Clearing existing target manager status.
+02:59:48 INFO  : Closing and re-opening the MSS file of ther project software_application_bsp
+02:59:48 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+02:59:59 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+03:30:02 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449217799000,  Project:1449215975000
+03:30:02 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+03:30:03 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+03:30:07 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+03:30:08 INFO  : 
+03:30:09 INFO  : 
+03:30:10 INFO  : Updating hardware inferred compiler options for software_application.
+03:30:11 INFO  : Clearing existing target manager status.
+03:30:11 INFO  : Closing and re-opening the MSS file of ther project software_application_bsp
+03:30:12 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+03:30:25 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+03:39:20 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+03:39:21 INFO  : XSDB server has started successfully.
+03:39:22 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+03:39:22 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+03:39:38 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+03:39:39 INFO  : XSDB server has started successfully.
+03:39:39 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+03:39:40 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+03:49:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:49:40 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+03:49:41 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:49:41 INFO  : System reset is completed.
+03:49:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+03:49:47 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+03:49:47 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:49:47 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+03:49:48 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:49:49 INFO  : 'ps7_init' command is executed.
+03:49:49 INFO  : 'ps7_post_config' command is executed.
+03:49:49 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:49:49 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+03:49:49 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+03:49:50 INFO  : Memory regions updated for context APU
+03:49:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:49:50 INFO  : 'con' command is executed.
+03:49:50 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+03:50:48 INFO  : Disconnected from the channel tcfchan#1.
+03:50:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:50:48 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+03:50:48 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:50:49 INFO  : System reset is completed.
+03:50:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+03:50:54 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+03:50:55 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:50:55 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+03:50:55 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:50:56 INFO  : 'ps7_init' command is executed.
+03:50:56 INFO  : 'ps7_post_config' command is executed.
+03:50:56 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:50:57 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+03:50:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+03:50:57 INFO  : Memory regions updated for context APU
+03:50:57 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:50:57 INFO  : 'con' command is executed.
+03:50:57 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+03:51:51 INFO  : Disconnected from the channel tcfchan#2.
+03:51:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:51:51 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+03:51:52 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:51:52 INFO  : System reset is completed.
+03:51:55 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+03:51:57 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+03:51:58 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:51:58 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+03:51:58 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:51:59 INFO  : 'ps7_init' command is executed.
+03:51:59 INFO  : 'ps7_post_config' command is executed.
+03:51:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:52:00 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+03:52:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+03:52:00 INFO  : Memory regions updated for context APU
+03:52:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:52:00 INFO  : 'con' command is executed.
+03:52:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+03:53:50 INFO  : Disconnected from the channel tcfchan#3.
+03:53:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:53:50 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+03:53:50 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:53:50 INFO  : System reset is completed.
+03:53:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+03:53:56 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+03:53:56 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:53:57 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+03:53:57 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:53:58 INFO  : 'ps7_init' command is executed.
+03:53:58 INFO  : 'ps7_post_config' command is executed.
+03:53:58 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:53:59 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+03:53:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+03:53:59 INFO  : Memory regions updated for context APU
+03:53:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:53:59 INFO  : 'con' command is executed.
+03:53:59 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+03:56:35 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+03:56:36 INFO  : XSDB server has started successfully.
+03:56:36 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+03:56:36 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+03:56:50 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+03:56:52 INFO  : XSDB server has started successfully.
+03:56:52 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+03:56:52 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+03:59:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:59:17 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+03:59:17 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:59:17 INFO  : System reset is completed.
+03:59:20 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+03:59:23 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+03:59:23 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:59:23 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+03:59:24 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+03:59:24 INFO  : 'ps7_init' command is executed.
+03:59:25 INFO  : 'ps7_post_config' command is executed.
+03:59:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:59:25 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+03:59:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+03:59:25 INFO  : Memory regions updated for context APU
+03:59:25 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+03:59:26 INFO  : 'con' command is executed.
+03:59:26 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+04:06:06 INFO  : Disconnected from the channel tcfchan#1.
+04:06:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+04:06:06 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+04:06:06 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+04:06:06 INFO  : System reset is completed.
+04:06:10 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+04:06:12 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+04:06:12 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+04:06:12 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+04:06:13 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+04:06:14 INFO  : 'ps7_init' command is executed.
+04:06:14 INFO  : 'ps7_post_config' command is executed.
+04:06:14 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+04:06:14 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+04:06:14 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+04:06:15 INFO  : Memory regions updated for context APU
+04:06:15 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+04:06:15 INFO  : 'con' command is executed.
+04:06:15 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+04:06:43 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+04:06:44 INFO  : XSDB server has started successfully.
+04:06:44 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+04:06:45 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+04:07:13 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+04:07:15 INFO  : XSDB server has started successfully.
+04:07:15 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+04:07:15 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+04:07:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+04:07:24 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+04:07:24 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+04:07:24 INFO  : System reset is completed.
+04:07:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+04:07:32 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+04:07:33 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+04:07:33 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+04:07:33 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+04:07:34 INFO  : 'ps7_init' command is executed.
+04:07:34 INFO  : 'ps7_post_config' command is executed.
+04:07:34 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+04:07:35 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+04:07:35 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+04:07:35 INFO  : Memory regions updated for context APU
+04:07:35 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+04:07:35 INFO  : 'con' command is executed.
+04:07:35 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+04:45:41 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449221240000,  Project:1449217799000
+04:45:41 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+04:45:45 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+04:45:53 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+04:46:00 INFO  : 
+04:46:01 INFO  : Updating hardware inferred compiler options for software_application.
+04:46:01 INFO  : Clearing existing target manager status.
+11:28:57 INFO  : Disconnected from the channel tcfchan#1.
+11:28:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:29:00 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+11:29:00 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+11:29:00 INFO  : System reset is completed.
+11:29:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+11:29:10 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+11:29:10 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+11:29:11 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+11:29:11 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+11:29:12 INFO  : 'ps7_init' command is executed.
+11:29:12 INFO  : 'ps7_post_config' command is executed.
+11:29:12 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:29:12 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:29:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+11:29:12 INFO  : Memory regions updated for context APU
+11:29:12 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:29:13 INFO  : 'con' command is executed.
+11:29:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+11:42:53 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+11:42:56 INFO  : XSDB server has started successfully.
+11:43:00 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+11:43:00 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+11:43:17 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+11:43:18 INFO  : XSDB server has started successfully.
+11:43:18 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+11:43:18 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+11:45:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:45:00 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+11:45:01 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+11:45:01 INFO  : System reset is completed.
+11:45:04 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+11:45:06 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+11:45:07 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+11:45:07 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+11:45:07 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+11:45:08 INFO  : 'ps7_init' command is executed.
+11:45:08 INFO  : 'ps7_post_config' command is executed.
+11:45:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:45:09 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:45:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+11:45:09 INFO  : Memory regions updated for context APU
+11:45:09 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:45:09 INFO  : 'con' command is executed.
+11:45:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+12:31:57 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449336624000,  Project:1449221240000
+12:31:58 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+12:32:12 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+12:32:29 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+12:32:45 INFO  : 
+12:32:47 INFO  : Updating hardware inferred compiler options for software_application.
+12:32:47 INFO  : Clearing existing target manager status.
+12:42:37 INFO  : Disconnected from the channel tcfchan#1.
+12:42:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:42:40 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+12:42:40 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+12:42:41 INFO  : System reset is completed.
+12:42:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+12:42:46 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+12:42:47 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+12:42:47 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+12:42:47 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+12:42:48 INFO  : 'ps7_init' command is executed.
+12:42:48 INFO  : 'ps7_post_config' command is executed.
+12:42:48 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:42:49 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+12:42:49 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+12:42:49 INFO  : Memory regions updated for context APU
+12:42:49 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+12:42:49 INFO  : 'con' command is executed.
+12:42:49 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+13:11:15 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449338853000,  Project:1449336624000
+13:11:15 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:11:20 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+13:11:30 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:11:36 INFO  : 
+13:11:37 INFO  : Updating hardware inferred compiler options for software_application.
+13:11:38 INFO  : Clearing existing target manager status.
+13:15:04 INFO  : Disconnected from the channel tcfchan#2.
+13:15:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:15:07 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+13:15:07 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+13:15:07 INFO  : System reset is completed.
+13:15:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+13:15:15 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+13:15:16 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+13:15:16 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+13:15:16 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+13:15:17 INFO  : 'ps7_init' command is executed.
+13:15:17 INFO  : 'ps7_post_config' command is executed.
+13:15:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:15:18 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:15:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+13:15:18 INFO  : Memory regions updated for context APU
+13:15:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:15:18 INFO  : 'con' command is executed.
+13:15:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+14:55:51 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+14:55:55 INFO  : XSDB server has started successfully.
+14:55:58 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+14:55:58 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+14:56:43 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+14:56:44 INFO  : XSDB server has started successfully.
+14:56:44 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+14:56:44 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+14:57:29 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:57:29 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+14:57:30 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+14:57:30 INFO  : System reset is completed.
+14:57:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+14:57:35 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+14:57:36 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+14:57:36 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+14:57:36 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+14:57:37 INFO  : 'ps7_init' command is executed.
+14:57:37 INFO  : 'ps7_post_config' command is executed.
+14:57:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:57:38 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+14:57:38 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+14:57:38 INFO  : Memory regions updated for context APU
+14:57:38 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+14:57:38 INFO  : 'con' command is executed.
+14:57:38 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:27:11 INFO  : Disconnected from the channel tcfchan#1.
+15:27:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:27:11 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:27:11 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:27:12 INFO  : System reset is completed.
+15:27:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+15:27:17 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+15:27:18 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:27:18 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+15:27:18 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:27:19 INFO  : 'ps7_init' command is executed.
+15:27:19 INFO  : 'ps7_post_config' command is executed.
+15:27:19 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:27:20 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:27:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+15:27:20 INFO  : Memory regions updated for context APU
+15:27:20 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:27:20 INFO  : 'con' command is executed.
+15:27:20 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:30:42 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+15:30:45 INFO  : XSDB server has started successfully.
+15:30:46 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+15:30:46 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+15:31:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:31:37 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:31:38 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:31:38 INFO  : System reset is completed.
+15:31:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+15:31:43 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+15:31:44 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:31:44 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+15:31:44 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:31:45 INFO  : 'ps7_init' command is executed.
+15:31:45 INFO  : 'ps7_post_config' command is executed.
+15:31:45 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:31:46 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:31:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+15:31:46 INFO  : Memory regions updated for context APU
+15:31:46 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:31:46 INFO  : 'con' command is executed.
+15:31:46 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:33:58 INFO  : Disconnected from the channel tcfchan#1.
+15:33:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:33:58 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:33:58 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:33:59 INFO  : System reset is completed.
+15:34:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+15:34:04 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+15:34:05 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:34:05 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+15:34:05 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:34:06 INFO  : 'ps7_init' command is executed.
+15:34:06 INFO  : 'ps7_post_config' command is executed.
+15:34:06 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:34:07 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:34:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+15:34:07 INFO  : Memory regions updated for context APU
+15:34:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:34:07 INFO  : 'con' command is executed.
+15:34:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+15:36:03 INFO  : Disconnected from the channel tcfchan#2.
+15:36:03 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:36:03 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+15:36:03 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:36:03 INFO  : System reset is completed.
+15:36:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+15:36:09 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+15:36:10 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:36:10 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+15:36:10 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+15:36:11 INFO  : 'ps7_init' command is executed.
+15:36:11 INFO  : 'ps7_post_config' command is executed.
+15:36:11 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:36:12 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+15:36:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+15:36:12 INFO  : Memory regions updated for context APU
+15:36:12 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+15:36:12 INFO  : 'con' command is executed.
+15:36:12 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+22:30:22 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449372620000,  Project:1449338853000
+22:30:22 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+22:30:23 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+22:30:29 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+22:30:32 INFO  : 
+22:30:33 INFO  : Updating hardware inferred compiler options for software_application.
+22:30:33 INFO  : Clearing existing target manager status.
+22:36:04 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+22:38:27 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+22:38:28 INFO  : XSDB server has started successfully.
+22:38:29 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+22:38:30 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+22:38:32 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449373088000,  Project:1449372620000
+22:38:32 INFO  : The hardware specification for project 'block_diagram_wrapper_hw_platform_0' is different from /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+22:38:32 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+22:38:37 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+22:38:38 INFO  : 
+22:38:39 INFO  : Updating hardware inferred compiler options for software_application.
+22:38:39 INFO  : Clearing existing target manager status.
+22:38:51 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+22:39:02 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+22:39:03 INFO  : XSDB server has started successfully.
+22:39:03 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+22:39:04 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+22:39:56 INFO  : Apm configuration has been updated and stored to '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/apmconfigs/apm_default.json' for the project 'block_diagram_wrapper_hw_platform_0'
+22:40:44 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449373242000,  Project:1449373088000
+22:40:44 INFO  : Project block_diagram_wrapper_hw_platform_0's source hardware specification located at /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+22:40:45 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+22:40:51 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+22:40:52 INFO  : 
+22:40:53 INFO  : Updating hardware inferred compiler options for software_application.
+22:40:53 INFO  : Clearing existing target manager status.
+22:43:47 INFO  : No changes in MSS file content so not generating sources.
+22:46:45 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+23:01:05 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+23:01:08 INFO  : XSDB server has started successfully.
+23:01:11 INFO  : Processing command line option -hwspec /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+23:01:16 INFO  : Checking for hwspec changes in the project block_diagram_wrapper_hw_platform_0.
+23:01:16 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1449374340000,  Project:1449373242000
+23:01:16 INFO  : The hardware specification for project 'block_diagram_wrapper_hw_platform_0' is different from /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf.
+23:01:17 INFO  : Copied contents of /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper.hdf into /block_diagram_wrapper_hw_platform_0/system.hdf.
+23:01:22 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+23:01:26 INFO  : 
+23:01:27 INFO  : Updating hardware inferred compiler options for software_application.
+23:01:27 INFO  : Clearing existing target manager status.
+23:03:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:03:13 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+23:03:14 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:03:14 INFO  : System reset is completed.
+23:03:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+23:03:20 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+23:03:20 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:03:20 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+23:03:20 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:03:21 INFO  : 'ps7_init' command is executed.
+23:03:21 INFO  : 'ps7_post_config' command is executed.
+23:03:21 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+23:03:22 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+23:03:22 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+23:03:22 INFO  : Memory regions updated for context APU
+23:03:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+23:03:22 INFO  : 'con' command is executed.
+23:03:22 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
+23:06:33 INFO  : Disconnected from the channel tcfchan#1.
+23:06:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+23:06:34 INFO  : Sourcing of '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl' is done.
+23:06:34 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:06:34 INFO  : System reset is completed.
+23:06:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1' command is executed.
+23:06:40 INFO  : FPGA configured successfully with bitstream "/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit"
+23:06:40 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:06:40 INFO  : Hardware design information is loaded from '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf'.
+23:06:40 INFO  : 'targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0' command is executed.
+23:06:41 INFO  : 'ps7_init' command is executed.
+23:06:41 INFO  : 'ps7_post_config' command is executed.
+23:06:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+23:06:42 INFO  : The application '/opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf' is downloaded to processor 'ps7_cortexa9_0'.
+23:06:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+rst -system
+targets -set -filter {jtag_cable_name =~ "Digilent Zed 210248446564" && level==0} -index 1
+fpga -file /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/block_diagram_wrapper.bit
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+loadhw /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/block_diagram_wrapper_hw_platform_0/system.hdf
+targets -set -filter {name =~"APU" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+dow /opt/Xilinx/Projects/zynq-memory-ordering/zynq-memory-ordering.sdk/software_application/Debug/software_application.elf
+----------------End of Script----------------
+
+23:06:42 INFO  : Memory regions updated for context APU
+23:06:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+23:06:42 INFO  : 'con' command is executed.
+23:06:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Digilent Zed 210248446564"} -index 0
+con
+----------------End of Script----------------
+
